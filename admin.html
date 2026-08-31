@@ -76,9 +76,7 @@ const SUPABASE_KEY = "sb_publishable_Z6iA4qATzZBjIbOJUO5LLQ_jBG7KdVr";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const $ = id => document.getElementById(id);
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",""":"&quot;"}[c]));
-}
+function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function setStatus(text, error=false) {
   $("status").textContent = text;
   $("status").style.color = error ? "#ff8b8b" : "";
