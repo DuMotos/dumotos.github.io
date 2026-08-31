@@ -40,18 +40,118 @@
 </section>
 </main>
 <footer><span>© 2026 DuMotos</span><a href="admin.html">Administração</a></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const motos = JSON.parse(localStorage.getItem("dumotos_motos") || "[]");
+const SUPABASE_URL = "https://snwsdunvhfudbwclrezy.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Z6iA4qATzZBjIbOJUO5LLQ_jBG7KdVr";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
 const box = document.getElementById("motos");
-if (motos.length) {
-  box.innerHTML = motos.map(m => `
-    <article class="card">
-      ${m.photo ? `<img src="${m.photo}" alt="${m.marca} ${m.modelo}">` : '<div class="photo-placeholder">🏍️</div>'}
-      <div class="card-body"><span class="tag">DISPONÍVEL</span><h3>${m.marca} ${m.modelo}</h3>
-      <p>${m.ano} • ${m.km || "Consulte a km"}</p><strong>R$ ${m.preco}</strong>
-      <a class="btn primary small" href="https://wa.me/5548996942186?text=${encodeURIComponent("Olá DuMotos, tenho interesse na "+m.marca+" "+m.modelo)}" target="_blank">TENHO INTERESSE</a></div>
-    </article>`).join("");
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
 }
+
+async function carregarMotos() {
+
+  box.innerHTML = `
+    <p class="muted">Carregando motos...</p>
+  `;
+
+  const { data, error } = await supabaseClient
+    .from("motos")
+    .select("id,marca,modelo,ano,km,preco,descricao,photo_url,disponivel")
+    .eq("disponivel", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+
+    box.innerHTML = `
+      <p class="muted">
+        Não foi possível carregar as motos.
+      </p>
+    `;
+
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    box.innerHTML = `
+      <article class="empty">
+        <div class="empty-icon">🏍️</div>
+        <h2>Seu próximo sonho começa aqui.</h2>
+        <p>
+          As motos cadastradas pela DuMotos aparecerão nesta área.
+        </p>
+      </article>
+    `;
+
+    return;
+  }
+
+  box.innerHTML = data.map(m => `
+    <article class="card">
+
+      ${
+        m.photo_url
+          ? `<img src="${escapeHtml(m.photo_url)}"
+                  alt="${escapeHtml(m.marca)} ${escapeHtml(m.modelo)}">`
+          : `<div class="card-photo">🏍️</div>`
+      }
+
+      <div class="card-body">
+
+        <span class="tag">DISPONÍVEL</span>
+
+        <h3>
+          ${escapeHtml(m.marca)} ${escapeHtml(m.modelo)}
+        </h3>
+
+        <p>
+          ${escapeHtml(m.ano)}
+          •
+          ${escapeHtml(m.km || "Consulte a km")}
+        </p>
+
+        <strong>
+          R$ ${Number(m.preco || 0).toLocaleString("pt-BR", {
+            minimumFractionDigits: 2
+          })}
+        </strong>
+
+        ${
+          m.descricao
+            ? `<p>${escapeHtml(m.descricao)}</p>`
+            : ""
+        }
+
+        <a
+          class="btn primary small"
+          href="https://wa.me/5548999999999"
+          target="_blank">
+          TENHO INTERESSE
+        </a>
+
+      </div>
+
+    </article>
+  `).join("");
+}
+
+carregarMotos();
 </script>
 </body>
 </html>
