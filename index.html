@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="DuMotos — Revenda de motos em Criciúma. Seu sonho está aqui.">
+<title>DuMotos | Seu sonho está aqui.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#inicio"><img src="imagens/logo.png" alt="DuMotos"></a>
+  <nav><a href="#inicio">Início</a><a href="#estoque">Estoque</a><a href="#financiamento">Financiamento</a><a href="#contato">Contato</a></nav>
+  <a class="admin-link" href="admin.html">Área administrativa</a>
+</header>
+<main id="inicio">
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">DUMOTOS • REVENDA DE MOTOS</div>
+    <h1>SUA MOTO OU<br>SEU <em>SONHO</em><br>ESTÁ AQUI.</h1>
+    <p>Motos selecionadas, procedência, qualidade e atendimento de verdade. Encontre sua próxima moto com a DuMotos.</p>
+    <div class="actions">
+      <a class="btn primary" href="#estoque">VER ESTOQUE</a>
+      <a class="btn ghost" href="https://wa.me/5548996942186" target="_blank" rel="noopener">FALAR COM A DUMOTOS</a>
+    </div>
+  </div>
+</section>
+<section id="estoque" class="section">
+  <div class="section-head"><div><div class="eyebrow">ESTOQUE</div><h2>Motos em destaque</h2></div><span class="muted">Qualidade para você escolher com confiança.</span></div>
+  <div id="motos" class="grid"><article class="empty"><div>🏍️</div><h3>Seu próximo sonho começa aqui.</h3><p>As motos cadastradas pela DuMotos aparecerão nesta área.</p><a class="btn primary small" href="admin.html">CADASTRAR MOTO</a></article></div>
+</section>
+<section id="financiamento" class="section split">
+  <div><div class="eyebrow">FACILIDADE</div><h2>Financiamento sem complicação.</h2><p>Consulte as condições disponíveis para sua próxima moto. A aprovação depende da análise da instituição financeira.</p><a class="btn primary small" href="https://wa.me/5548996942186" target="_blank">SIMULAR AGORA</a></div>
+  <div class="feature"><b>✓</b><h3>Procedência</h3><p>Motos selecionadas e revisadas.</p><b>✓</b><h3>Atendimento</h3><p>Atendimento direto pelo WhatsApp.</p></div>
+</section>
+<section id="contato" class="contact">
+  <div><div class="eyebrow">DU MOTOS</div><h2>Vamos encontrar sua moto.</h2><p>Rua Otto Maier, 463 — Mina Brasil, Criciúma/SC</p><p>Segunda a sexta, 08h às 18h</p></div>
+  <div class="contact-actions"><a class="btn primary" href="https://wa.me/5548996942186" target="_blank">WHATSAPP</a><a class="btn ghost" href="https://maps.app.goo.gl/K9fLkBNHf1cJb7UAA" target="_blank">COMO CHEGAR</a><a class="instagram" href="https://www.instagram.com/dumotos.001" target="_blank">Instagram @dumotos.001</a></div>
+</section>
+</main>
+<footer><span>© 2026 DuMotos</span><a href="admin.html">Administração</a></footer>
+<script>
+const motos = JSON.parse(localStorage.getItem("dumotos_motos") || "[]");
+const box = document.getElementById("motos");
+if (motos.length) {
+  box.innerHTML = motos.map(m => `
+    <article class="card">
+      ${m.photo ? `<img src="${m.photo}" alt="${m.marca} ${m.modelo}">` : '<div class="photo-placeholder">🏍️</div>'}
+      <div class="card-body"><span class="tag">DISPONÍVEL</span><h3>${m.marca} ${m.modelo}</h3>
+      <p>${m.ano} • ${m.km || "Consulte a km"}</p><strong>R$ ${m.preco}</strong>
+      <a class="btn primary small" href="https://wa.me/5548996942186?text=${encodeURIComponent("Olá DuMotos, tenho interesse na "+m.marca+" "+m.modelo)}" target="_blank">TENHO INTERESSE</a></div>
+    </article>`).join("");
+}
+</script>
+</body>
+</html>
