@@ -1,157 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080808">
-<meta name="description" content="DuMotos — Revenda de motos em Criciúma. Seu sonho está aqui.">
-<title>DuMotos | Seu sonho está aqui.</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070707">
+<meta name="description" content="ACHOU! — compare preços, frete, prazo e avaliações em um só lugar.">
+<title>ACHOU! — A gente procura. Você economiza tempo.</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#inicio"><img src="logo.png" alt="DuMotos"></a>
-  <nav><a href="#inicio">Início</a><a href="#estoque">Estoque</a><a href="#financiamento">Financiamento</a><a href="#contato">Contato</a></nav>
-  <a href="admin.html" title="Verificado" style="font-size:12px;text-decoration:none;opacity:.6">✔️</a>
+<header class="header">
+  <a class="brand" href="#inicio">
+    <div class="brand-name">ACHOU<span>!</span></div>
+    <div class="brand-sub">A gente procura.<br><b>Você economiza tempo.</b></div>
+  </a>
+  <nav class="nav">
+    <a class="active" href="#inicio">Início</a>
+    <a href="#categorias">Categorias <span>⌄</span></a>
+    <a href="#ofertas">Ofertas do dia</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#favoritos">Favoritos</a>
+  </nav>
+  <div class="header-actions">
+    <a href="#favoritos">♡ <span>Favoritos</span></a>
+    <a href="#entrar">♙ <span>Entrar</span></a>
+    <a class="bag" href="#ofertas">♧</a>
+  </div>
 </header>
+
 <main id="inicio">
 <section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">DUMOTOS • REVENDA DE MOTOS</div>
-    <h1>SEU <em>SONHO</em><br>ESTÁ AQUI.</h1>
-    <p>Motos selecionadas, procedência, qualidade e atendimento de verdade. Encontre sua próxima moto com a DuMotos.</p>
-    <div class="actions">
-      <a class="btn primary" href="#estoque">VER ESTOQUE</a>
-      <a class="btn ghost" href="https://wa.me/5548996942186" target="_blank" rel="noopener">FALAR COM A DUMOTOS</a>
+  <div class="hero-left">
+    <div class="eyebrow">COMPARE ANTES DE COMPRAR</div>
+    <h1>A gente procura.<br><span>Você economiza tempo.</span></h1>
+    <p class="hero-text">Compare preços entre as principais lojas<br class="desktop"> e encontre sempre a melhor oferta.</p>
+
+    <form class="search-box" id="searchForm">
+      <div class="input-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="search" type="search" placeholder="O que você está procurando?" autocomplete="off">
+      </div>
+      <select id="category" aria-label="Categoria">
+        <option value="">Todas as categorias</option>
+        <option>Celulares</option><option>Informática</option><option>Áudio</option>
+        <option>Casa</option><option>Eletrodomésticos</option><option>Automotivo</option>
+        <option>Esportes</option><option>Games</option><option>Beleza</option><option>Ferramentas</option>
+      </select>
+      <button type="submit">COMPARAR PREÇOS <span>⌕</span></button>
+    </form>
+
+    <div class="popular"><b>Buscas populares:</b>
+      <button type="button">Fone Bluetooth</button><button type="button">iPhone 15</button>
+      <button type="button">Monitor Gamer</button><button type="button">Smartwatch</button>
+      <button type="button">Air Fryer</button><button type="button">Notebook</button>
     </div>
   </div>
+
+  <div class="hero-visual">
+    <div class="hero-orbit"></div>
+    <div class="hero-person hero-person-image">
+      <img src="./hero-person-tight.png" alt="Pessoa surpresa ao encontrar uma ótima compra no ACHOU!">
+    </div>
+    <div class="bubble bubble-1"><b>⌑</b><span>Compara preços<br>e condições</span></div>
+    <div class="bubble bubble-2"><b>⌕</b><span>A gente procura<br>nas melhores lojas</span></div>
+    <div class="bubble bubble-3"><b>◷</b><span>Você economiza<br>tempo e dinheiro</span></div>
+  </div>
 </section>
-<section id="estoque" class="section">
-  <div class="section-head"><div><div class="eyebrow">ESTOQUE</div><h2>Motos em destaque</h2></div><span class="muted">Qualidade para você escolher com confiança.</span></div>
-  <div id="motos" class="grid"><article class="empty"><div>🏍️</div><h3>Seu próximo sonho começa aqui.</h3><p>As motos cadastradas pela DuMotos aparecerão nesta área.</p><a class="btn primary small" href="admin.html">CADASTRAR MOTO</a></article></div>
+
+<section class="benefits" id="como-funciona">
+  <article><span>⌕</span><div><b>Pesquisa inteligente</b><small>Buscamos em várias lojas<br>ao mesmo tempo</small></div></article>
+  <article><span>$</span><div><b>Compara tudo</b><small>Preço, frete, prazo e<br>avaliações</small></div></article>
+  <article><span>✧</span><div><b>Melhores ofertas</b><small>Mostramos a melhor opção<br>para você</small></div></article>
+  <article><span>✓</span><div><b>Compra segura</b><small>Você compra direto na loja<br>parceira</small></div></article>
 </section>
-<section id="financiamento" class="section split">
-  <div><div class="eyebrow">FACILIDADE</div><h2>Financiamento sem complicação.</h2><p>Consulte as condições disponíveis para sua próxima moto. A aprovação depende da análise da instituição financeira.</p><a class="btn primary small" href="https://wa.me/5548996942186" target="_blank">SIMULAR AGORA</a></div>
-  <div class="feature"><b>✓</b><h3>Procedência</h3><p>Motos selecionadas e revisadas.</p><b>✓</b><h3>Atendimento</h3><p>Atendimento direto pelo WhatsApp.</p></div>
+
+<section class="section" id="categorias">
+  <div class="section-title"><h2>Explore por categorias</h2><a href="#categorias">Ver todas →</a></div>
+  <div class="category-grid">
+    <button data-category="Celulares"><span>📱</span><b>Celulares</b></button>
+    <button data-category="Informática"><span>💻</span><b>Informática</b></button>
+    <button data-category="Áudio"><span>🎧</span><b>Áudio</b></button>
+    <button data-category="Casa"><span>🛋️</span><b>Casa</b></button>
+    <button data-category="Eletrodomésticos"><span>🧺</span><b>Eletrodomésticos</b></button>
+    <button data-category="Automotivo"><span>🚗</span><b>Automotivo</b></button>
+    <button data-category="Esportes"><span>🏋️</span><b>Esportes</b></button>
+    <button data-category="Games"><span>🎮</span><b>Games</b></button>
+    <button data-category="Beleza"><span>🧴</span><b>Beleza</b></button>
+    <button data-category="Ferramentas"><span>🛠️</span><b>Ferramentas</b></button>
+  </div>
 </section>
-<section id="contato" class="contact">
-  <div><div class="eyebrow">DU MOTOS</div><h2>Vamos encontrar sua moto.</h2><p>Rua Otto Maier, 463 — Mina Brasil, Criciúma/SC</p><p>Segunda a sexta, 08h às 18h</p></div>
-  <div class="contact-actions"><a class="btn primary" href="https://wa.me/5548996942186" target="_blank">WHATSAPP</a><a class="btn ghost" href="https://maps.app.goo.gl/K9fLkBNHf1cJb7UAA" target="_blank">COMO CHEGAR</a><a class="instagram" href="https://www.instagram.com/dumotos.001" target="_blank">Instagram @dumotos.001</a></div>
+
+<section class="section offers" id="ofertas">
+  <div class="section-title"><div><h2>Ofertas encontradas para você 🔥</h2><p>Compare e escolha a melhor opção</p></div><a href="#ofertas">Ver todas →</a></div>
+  <div class="offer-layout">
+    <div class="products">
+      <article class="product-main"><div class="product-img">🎧</div><div><h3>Fone Bluetooth JBL Tune 520BT</h3><p class="rating">★ <b>4,8</b> (12.456 avaliações)</p><div class="chips"><span>Bluetooth 5.3</span><span>40h de bateria</span></div></div></article>
+      <article class="store-card best"><div class="store">🛍️ Shopee <span>✓</span></div><strong>R$ 137,90</strong><small>à vista</small><p>Frete: <b>R$ 8,90</b></p><p>Chega: 22 - 24 de Mai.</p><button>VER OFERTA</button><em>Ir para a loja</em></article>
+      <article class="store-card"><div class="store">◉ mercado<br>livre</div><strong>R$ 159,90</strong><small>à vista</small><p>Frete: Grátis 🚚</p><p>Chega: 21 - 23 de Mai.</p><button>VER OFERTA</button><em>Ir para a loja</em></article>
+      <article class="store-card"><div class="store amazon">amazon<small>.com.br</small></div><strong>R$ 149,90</strong><small>à vista</small><p>Frete: Grátis 🚚</p><p>Chega: 23 - 25 de Mai.</p><button>VER OFERTA</button><em>Ir para a loja</em></article>
+    </div>
+    <aside class="daily"><div class="daily-head"><b>⚡ Ofertas do dia</b><span>06 : 34 : 12</span></div>
+      <div class="daily-item"><span>🍳</span><div><b>Air Fryer Mundial</b><small>AFN-50-BI 5L</small><del>R$ 499,90</del><strong>R$ 349,90</strong></div></div>
+      <div class="daily-item"><span>📱</span><div><b>Smartphone Samsung</b><small>Galaxy A54 5G 128GB</small><del>R$ 1.999,00</del><strong>R$ 1.499,00</strong></div></div>
+    </aside>
+  </div>
+</section>
+
+<section class="trust">
+  <div><span>♟</span><b>+500 mil</b><small>Pessoas já economizaram</small></div>
+  <div><span>✓</span><b>100% Seguro</b><small>Links verificados</small></div>
+  <div><span>♜</span><b>+20 Lojas</b><small>Parceiras confiáveis</small></div>
+  <div><span>◷</span><b>Economize tempo</b><small>E encontre o melhor</small></div>
+</section>
+
+<section class="results section" id="resultados" hidden>
+  <div class="section-title"><div><h2>Resultados para você</h2><p>Ofertas demonstrativas enquanto a integração com lojas é preparada.</p></div><button id="clearResults">Limpar</button></div>
+  <div class="result-grid" id="resultGrid"></div>
+</section>
+
+<section class="section favorites" id="favoritos">
+  <div class="section-title"><div><h2>Favoritos</h2><p>Salve produtos para comparar depois.</p></div></div>
+  <div class="empty">♡<h3>Seus favoritos aparecerão aqui.</h3></div>
 </section>
 </main>
-<footer><span>© 2026 DuMotos</span><a href="admin.html">Administração</a></footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-const SUPABASE_URL = "https://snwsdunvhfudbwclrezy.supabase.co";
-const SUPABASE_KEY = "sb_publishable_Z6iA4qATzZBjIbOJUO5LLQ_jBG7KdVr";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-const box = document.getElementById("motos");
-
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
-}
-
-async function carregarMotos() {
-
-  box.innerHTML = `
-    <p class="muted">Carregando motos...</p>
-  `;
-
-  const { data, error } = await supabaseClient
-    .from("motos")
-    .select("id,marca,modelo,ano,km,preco,descricao,photo_url,disponivel")
-    .eq("disponivel", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error(error);
-
-    box.innerHTML = `
-      <p class="muted">
-        Não foi possível carregar as motos.
-      </p>
-    `;
-
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    box.innerHTML = `
-      <article class="empty">
-        <div class="empty-icon">🏍️</div>
-        <h2>Seu próximo sonho começa aqui.</h2>
-        <p>
-          As motos cadastradas pela DuMotos aparecerão nesta área.
-        </p>
-      </article>
-    `;
-
-    return;
-  }
-
-  box.innerHTML = data.map(m => `
-    <article class="card">
-
-      ${
-        m.photo_url
-          ? `<img src="${escapeHtml(m.photo_url)}"
-                  alt="${escapeHtml(m.marca)} ${escapeHtml(m.modelo)}">`
-          : `<div class="card-photo">🏍️</div>`
-      }
-
-      <div class="card-body">
-
-        <span class="tag">DISPONÍVEL</span>
-
-        <h3>
-          ${escapeHtml(m.marca)} ${escapeHtml(m.modelo)}
-        </h3>
-
-        <p>
-          ${escapeHtml(m.ano)}
-          •
-          ${escapeHtml(m.km || "Consulte a km")}
-        </p>
-
-        <strong>
-          R$ ${Number(m.preco || 0).toLocaleString("pt-BR", {
-            minimumFractionDigits: 2
-          })}
-        </strong>
-
-        ${
-          m.descricao
-            ? `<p>${escapeHtml(m.descricao)}</p>`
-            : ""
-        }
-
-        <a
-          class="btn primary small"
-          href="https://wa.me/5548996942186"
-          target="_blank">
-          TENHO INTERESSE
-        </a>
-
-      </div>
-
-    </article>
-  `).join("");
-}
-
-carregarMotos();
-</script>
+<footer id="entrar"><b>ACHOU<span>!</span></b><p>A gente procura. Você economiza tempo.</p><small>© 2026 ACHOU! — Projeto em desenvolvimento.</small></footer>
+<script src="./app.js"></script>
 </body>
 </html>
